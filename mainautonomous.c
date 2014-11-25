@@ -16,7 +16,7 @@
 
 #include "JoystickDriver.c"  //Include file to "handle" the Bluetooth messages.
 
-void initializeRobot()
+void initializeRobot()//initializes robot
 {
 	servo[servo1] = 0;
 	servo[servo2] = 256;
@@ -25,7 +25,7 @@ void initializeRobot()
 	return;
 }
 
-void ereset()
+void ereset()//encoder reset
 {
 	nMotorEncoder[motorD] = 0;
 	nMotorEncoder[motorE] = 0;
@@ -35,7 +35,7 @@ void ereset()
 	return;
 }
 
-void moveforward()
+void moveforward()//function called to move robot forward
 {
 	motor[motorD] = 50;
 	motor[motorE] = 50;
@@ -45,27 +45,7 @@ void moveforward()
 	return;
 }
 
-void turnleft()
-{
-	motor[motorD] = -10;
-	motor[motorE] = 50;
-	motor[motorF] = -10;
-	motor[motorG] = 50;
-
-	return;
-}
-
-void turnright()
-{
-	motor[motorD] = 50;
-	motor[motorE] = -10;
-	motor[motorF] = 50;
-	motor[motorG] = -10;
-
-	return;
-}
-
-void movebackward()
+void movebackward()//function called to move robot backward
 {
 	motor[motorD] = -50;
 	motor[motorE] = -50;
@@ -75,7 +55,27 @@ void movebackward()
 	return;
 }
 
-void brake()
+void turnleft()//function called to turn robot left
+{
+	motor[motorD] = -10;
+	motor[motorE] = 50;
+	motor[motorF] = -10;
+	motor[motorG] = 50;
+
+	return;
+}
+
+void turnright()//function called to turn robot right
+{
+	motor[motorD] = 50;
+	motor[motorE] = -10;
+	motor[motorF] = 50;
+	motor[motorG] = -10;
+
+	return;
+}
+
+void brake()//function called to brake robot
 {
 	motor[motorD] = 0;
 	motor[motorE] = 0;
@@ -85,7 +85,7 @@ void brake()
 	return;
 }
 
-task main()
+task main()//main autonomous program
 {
 	initializeRobot();
 
@@ -94,10 +94,10 @@ task main()
 	waitForStart();
 
 	moveforward();
-	wait1Msec(3400);
+	wait1Msec(4200);
 
 	turnleft();
-	wait1Msec(1500);
+	wait1Msec(1300);
 
 	movebackward();
 	wait1Msec(800);
@@ -106,14 +106,13 @@ task main()
 	wait1Msec(1000);
 
 	moveforward();
-	wait1Msec(1400);
+	wait1Msec(1300);
 
-	turnright();
-	wait1Msec(2200);
+	turnleft();
+	wait1Msec(1600);
 
 	if (SensorValue(irs) == 5)
-	{
-		turnleft();
+	{	turnleft();
 		wait1Msec(800);
 
 		moveforward();
@@ -123,29 +122,18 @@ task main()
 	else
 	{
 		turnleft();
-		wait1Msec(2000);
+		wait1Msec(100);
 
 		moveforward();
-		wait1Msec(1200);
+		wait1Msec(1500);
 	}
 
-        
-        if (SensorValue(irs) == 5)
-        {
-                turnleft();
-                wait1Msec(800);
-                
-                moveforward();
-                wait1Msec(1500);
-        }
-        
-        else
-        {
-                turnleft();
-                wai1Msec(2000);
-                
-                moveforward();
-                wait1Msec(1200);
-        }
-  
+	while (SensorValue(irs) != 5)
+	{
+		turnright();
+		wait1Msec(950);
+
+		moveforward();
+		wait1Msec(1050);
+	}
 }
