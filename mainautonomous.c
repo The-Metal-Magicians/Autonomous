@@ -25,7 +25,7 @@ void initializeRobot()
 	return;
 }
 
-void ereset() //reset the encoder 
+void ereset()//encoder reset
 {
 	nMotorEncoder[motorD] = 0;
 	nMotorEncoder[motorE] = 0;
@@ -35,7 +35,7 @@ void ereset() //reset the encoder
 	return;
 }
 
-void moveforward() //move the robot forward
+void moveforward()//function used to move robot fowrard
 {
 	motor[motorD] = 50;
 	motor[motorE] = 50;
@@ -45,7 +45,7 @@ void moveforward() //move the robot forward
 	return;
 }
 
-void turnleft() //make the robot turn left
+void turnleft()//function used to turn robot left
 {
 	motor[motorD] = -10;
 	motor[motorE] = 50;
@@ -55,7 +55,7 @@ void turnleft() //make the robot turn left
 	return;
 }
 
-void turnright() //make the robot turn right
+void turnright()//function used to turn robot right
 {
 	motor[motorD] = 50;
 	motor[motorE] = -10;
@@ -65,7 +65,7 @@ void turnright() //make the robot turn right
 	return;
 }
 
-void movebackward() //make the robot move backwards
+void movebackward()//function used to move robot backwards
 {
 	motor[motorD] = -50;
 	motor[motorE] = -50;
@@ -75,7 +75,7 @@ void movebackward() //make the robot move backwards
 	return;
 }
 
-void brake()
+void brake()//function used to brake robot
 {
 	motor[motorD] = 0;
 	motor[motorE] = 0;
@@ -85,7 +85,7 @@ void brake()
 	return;
 }
 
-task main()
+task main()//main program
 {
 	initializeRobot();
 
