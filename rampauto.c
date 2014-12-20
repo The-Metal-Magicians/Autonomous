@@ -25,66 +25,66 @@
 
 void initializeRobot()
 {
-	servo[servo1] = 0;
-	servo[servo2] = 256;
-	servo[servo3] = 256;
+	servo[servo1] = 0; //during initialization servo one will move 0 degrees
+	servo[servo2] = 256; //during initialization servo two will move 256 degrees
+	servo[servo3] = 256; //during initialization servo three wil move 256 degrees
 
 	return;
 }
 
 void ereset() //reset the encoder
 {
-	nMotorEncoder[motorD] = 0;
-	nMotorEncoder[motorE] = 0;
-	nMotorEncoder[motorF] = 0;
-	nMotorEncoder[motorG] = 0;
+	nMotorEncoder[motorD] = 0; //resets motor encoder D
+	nMotorEncoder[motorE] = 0; //resets motor encoder E
+	nMotorEncoder[motorF] = 0; //resets motor encoder F
+	nMotorEncoder[motorG] = 0; //resets motor encoder G
 
 	return;
 }
 
 void moveforward() //move the robot forward
 {
-	motor[motorD] = 50;
-	motor[motorE] = 50;
-	motor[motorF] = 50;
-	motor[motorG] = 50;
+	motor[motorD] = 50; //moves motor D forward 50 degrees
+	motor[motorE] = 50; //moves motor E forward 50 degrees
+	motor[motorF] = 50; //moves motor F forward 50 degrees
+	motor[motorG] = 50; //moves motor G forward 50 degrees
 
 	return;
 }
 
 void turnleft() //make the robot turn left
 {
-	motor[motorD] = -10;
-	motor[motorE] = 50;
-	motor[motorF] = -10;
-	motor[motorG] = 50;
+	motor[motorD] = -10; //makes motor D go backwards 10 degrees
+	motor[motorE] = 50; //makes motor E go forwards 50 degrees 
+	motor[motorF] = -10; //makes motor F go backwards 10 degrees
+	motor[motorG] = 50; //makes motor G go forward 50 degrees
 
 	return;
 }
 
 void turnright() //make the robot turn right
 {
-	motor[motorD] = 50;
-	motor[motorE] = -10;
-	motor[motorF] = 50;
-	motor[motorG] = -10;
+	motor[motorD] = 50;// makes motor D go forward 50 degrees
+	motor[motorE] = -10;// makes motor E go backwards 10 degrees
+	motor[motorF] = 50;// makes motor F go forward 50 degrees
+	motor[motorG] = -10;// makes motor G go backward 10 degrees
 
 	return;
 }
 
 void movebackward() //make the robot move backwards
 {
-	motor[motorD] = -50;
-	motor[motorE] = -50;
-	motor[motorF] = -50;
-	motor[motorG] = -50;
+	motor[motorD] = -50;// makes motor D go backward 50 degrees
+	motor[motorE] = -50;// makes motor E go backward 50 degrees
+	motor[motorF] = -50;// makes motor F go backward 50 degree
+	motor[motorG] = -50;// makes motor G go backward 50% power
 
 	return;
 }
 
-void brake()
+void brake()// stops the motors
 {
-	motor[motorD] = 0;
+	motor[motorD] = 0; // stops motor D
 	motor[motorE] = 0;
 	motor[motorF] = 0;
 	motor[motorG] = 0;
